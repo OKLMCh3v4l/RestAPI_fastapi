@@ -1,0 +1,69 @@
+# 1. Login Endpoint
+# Login et obtenir un token d'accès
+curl -X POST "http://localhost:8000/login" -H "Content-Type: application/x-www-form-urlencoded" -d "username=admin&password=password"
+
+# 2. User Endpoints
+# a. Récupérer tous les utilisateurs
+curl -X GET "http://localhost:8000/users" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc"
+
+# b. Créer un nouvel utilisateur
+curl -X POST "http://localhost:8000/users" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc" \
+-H "Content-Type: application/json" \
+-d '{"id": 4, "username": "user4"}'
+
+# c. Récupérer un utilisateur par ID
+curl -X GET "http://localhost:8000/users/4" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc"
+
+# d. Mettre à jour un utilisateur par ID
+curl -X PUT "http://localhost:8000/users/4" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc" \
+-H "Content-Type: application/json" \
+-d '{"id": 4, "username": "updated_user4"}'
+
+# e. Supprimer un utilisateur par ID
+curl -X DELETE "http://localhost:8000/users/4" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc"
+
+# 3. Product Endpoints
+# a. Récupérer tous les produits
+curl -X GET "http://localhost:8000/products" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc"
+
+# b. Créer un nouveau produit
+curl -X POST "http://localhost:8000/products" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc" \
+-H "Content-Type: application/json" \
+-d '{"id": 3, "name": "Orange", "price": 1}'
+
+# c. Récupérer un produit par ID
+curl -X GET "http://localhost:8000/products/3" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc"
+
+# d. Mettre à jour un produit par ID
+curl -X PUT "http://localhost:8000/products/3" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc" \
+-H "Content-Type: application/json" \
+-d '{"id": 3, "name": "Orange", "price": 2}'
+
+# e. Supprimer un produit par ID
+curl -X DELETE "http://localhost:8000/products/3" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc"
+
+# 4. Cart Endpoints
+# a. Récupérer tous les paniers
+curl -X GET "http://localhost:8000/carts" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc"
+
+# b. Créer un nouveau panier
+curl -X POST "http://localhost:8000/carts" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc" \
+-H "Content-Type: application/json" \
+-d '{"id": 1, "items": [{"product_id": 1, "quantity": 2}]}'
+
+# c. Récupérer un panier par ID
+curl -X GET "http://localhost:8000/carts/1" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc"
+
+# d. Mettre à jour un panier par ID
+curl -X PUT "http://localhost:8000/carts/1" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc" \
+-H "Content-Type: application/json" \
+-d '{"id": 1, "items": [{"product_id": 1, "quantity": 3}]}'
+
+# e. Supprimer un panier par ID
+curl -X DELETE "http://localhost:8000/carts/1" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiJ9.eMIv7ZB3hmIu7iPqhVxN6fRWFwFnTOMjhINPjELHjXc"
